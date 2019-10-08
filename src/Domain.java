@@ -1,4 +1,5 @@
 public class Domain {
+    //domain could be different types
     int [] domain = new int[3];
     public Domain() {
         for (int i : this.domain) {
