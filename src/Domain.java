@@ -1,17 +1,24 @@
 public class Domain {
     //domain could be different types
-    int [] domain = new int[3];
-    public Domain() {
-        for (int i : this.domain) {
-            i = 0;
-        }
+    protected ArrayListSet allowedValues;
+
+    public Domain(ArrayListSet values) {
+        this.allowedValues = values;
 
     }
-    public String toString() {
-        String results = "";
-        for (int i: this.domain) {
-            results = results + i + " ";
-        }
-        return results;
+
+    public ArrayListSet getAllowedValues() {
+        return this.allowedValues;
     }
+
+    public String toString(){
+        String result = "";
+        for (int i=0; i< this.allowedValues.size(); i++ ){
+            result = result + " " + this.allowedValues.get(i);
+
+
+        }
+        return result;
+
+    } ;
 }

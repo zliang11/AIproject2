@@ -1,3 +1,10 @@
-abstract class Constraint {
+
+
+public abstract class Constraint {
+
+
+    public Constraint(){
+
+    }
 
 }
