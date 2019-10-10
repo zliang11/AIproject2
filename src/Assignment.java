@@ -1,12 +1,13 @@
 import java.util.HashMap;
 import java.util.Map;
 public class Assignment {
-    Variable variable;
-    Object assignedValue;
+    Variable variable = null;
+    Object assignedValue = null;
 
     public Assignment(Variable var, Object assignmentValue) {
         this.variable = var;
         this.assignedValue = assignmentValue;
+
 
 //        Domain fake = new Domain();
 //        Variable a = new Variable("a",fake);
@@ -14,6 +15,9 @@ public class Assignment {
 //
 //        System.out.println(this.assignmentMap.toString());
 
+    }
+    public Variable getVariable(){
+        return this.variable;
     }
 //    public boolean checkComplete(CSP problem){
 //        // if this.assignment is complete, return true;

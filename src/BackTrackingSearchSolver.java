@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class BackTrackingSearchSolver {
     ArrayListSet<Assignment> assignments;
 
@@ -6,22 +9,47 @@ public class BackTrackingSearchSolver {
 
     }
 
-    public Solution Backtracking_Search(CSP problem) {
+    public ArrayListSet Backtracking_Search(CSP problem) {
 
-        Solution test = new Solution();
+        ArrayListSet<Assignment> test = new ArrayListSet<>();
         // placeholder only
 
-        return test;
+        return Backtrack(test, problem);
     }
 
-    public Solution Backtrack(ArrayListSet<Assignment> assign, CSP problem) {
+    public ArrayListSet Backtrack(ArrayListSet<Assignment> assignments, CSP problem) {
+        //this assignment input should be from the CSP problem's assignment.
+
+        if (AssignmentComplete(assignments, problem.getVariables())) {
+            return assignments;
+        }
+        // picking unselected variable to do new assignment
+        //the problem itself keeps track of assignment,
+
+        Variable var = problem.selectUnassignedVar();
+
 //        if (assign.complete()) {
 //            return assign;
 //        }
-        Solution test = new Solution();
-        // placeholder only
+        ArrayListSet<Assignment> test = new ArrayListSet<>();        // placeholder only
 
         return test;
 
+    }
+
+    public boolean AssignmentComplete(ArrayListSet<Assignment> assignments, ArrayListSet variables) {
+        List<Variable> allVariablesAssigned = new ArrayList<>();
+        //making a list of variables that have assigned a value
+        for(Assignment assign: assignments){
+            allVariablesAssigned.add(assign.getVariable());
+        }
+        //if all variables have been assigned, then the assignment list complete. if not, then no
+
+        for(int i=0; i< variables.size(); i++){
+            if (!allVariablesAssigned.contains(variables.get(i))){
+                return false;
+            }
+        }
+        return true;
     }
 }

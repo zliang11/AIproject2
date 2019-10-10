@@ -16,6 +16,7 @@ public abstract class Variable {
     public Domain getDomain(){
         return this.domain;
     }
+    
     public abstract Domain changeDomain();
     //this is for when inference happens, domain of the variable changes/altered
 

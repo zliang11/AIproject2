@@ -1,3 +1,7 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class CSP {
     ArrayListSet<Variable> variables;
     ArrayListSet<Constraint> constraints;
@@ -8,13 +12,29 @@ public abstract class CSP {
         this.assignments = new ArrayListSet<>();
     }
 
-    public Variable selectUnassignedVar(Assignment assign) {
-//        for ( Variable var: variables) {
-//            if (!assign.getAssignmentMap().keySet().contains(var)){
-//                return var;
-//            }
-//        }
+    public Variable selectUnassignedVar() {
+        List<Variable> allVariablesAssigned = new ArrayList<>();
+        //making a list of variables that have assigned a value
+        for(Assignment assign: this.assignments){
+            allVariablesAssigned.add(assign.getVariable());
+        }
+
+        for(int i=0; i< variables.size(); i++){
+            if (!allVariablesAssigned.contains(variables.get(i))){
+                return variables.get(i);
+            }
+        }
+        //picking the variable that has not been assigned yet.
         return null;
+
+    }
+    public ArrayListSet getVariables(){
+        return this.variables;
+    }
+    public void PrintConstraints(){
+        for (Constraint con: this.constraints){
+            System.out.println(con);
+        }
     }
     public void PrintVariable(){
         for (Variable var:variables){
