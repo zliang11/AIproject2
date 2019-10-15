@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class BackTrackingSearchSolver {
     ArrayListSet<Assignment> assignments;
@@ -51,5 +53,30 @@ public class BackTrackingSearchSolver {
             }
         }
         return true;
+    }
+
+
+    // AC3 algorithm
+    public boolean AC3(CSP problem, ArrayListSet variables, Domain domain, Constraint constraint) {
+        Queue<Variable> queue = new LinkedList<Variable>();
+        // add arcs to queue
+        for ( : problem.getVariables())
+        while(!queue.isEmpty()){
+            queue.pop();
+            if Revise(problem, Xi, Xj){
+
+            }
+        }
+        return true;
+    }
+
+    // Revise function for AC3 algorithm
+    public boolean Revise(CSP problem, Variable Xi, Variable Xj){
+        boolean revised = false;
+        for (domain : problem.getDomainValues(Xi)){
+
+        }
+
+        return revised;
     }
 }
