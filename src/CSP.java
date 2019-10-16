@@ -12,18 +12,25 @@ public abstract class CSP {
         this.assignments = new ArrayListSet<>();
     }
 
+    // sleecting the unassigned variable - done
     public Variable selectUnassignedVar() {
-        List<Variable> allVariablesAssigned = new ArrayList<>();
-        //making a list of variables that have assigned a value
-        for(Assignment assign: this.assignments){
-            allVariablesAssigned.add(assign.getVariable());
-        }
-
-        for(int i=0; i< variables.size(); i++){
-            if (!allVariablesAssigned.contains(variables.get(i))){
-                return variables.get(i);
+        for( int j=0; j<variables.size(); j++){
+            if(!variables.get(j).valueAssigned()){
+                return variables.get(j);
             }
         }
+
+//        List<Variable> allVariablesAssigned = new ArrayList<>();
+//        //making a list of variables that have assigned a value
+//        for(Assignment assign: this.assignments){
+//            allVariablesAssigned.add(assign.getVariable());
+//        }
+//
+//        for(int i=0; i< variables.size(); i++){
+//            if (!allVariablesAssigned.contains(variables.get(i))){
+//                return variables.get(i);
+//            }
+//        }
         //picking the variable that has not been assigned yet.
         return null;
 
