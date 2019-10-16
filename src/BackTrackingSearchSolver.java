@@ -32,32 +32,15 @@ public class BackTrackingSearchSolver {
     public ArrayListSet Backtrack(ArrayListSet<Assignment> assignments, CSP problem) {
         //this assignment input should be from the CSP problem's assignment.
 
-        if (AssignmentComplete(problem.getVariables())) {
+        if (AssignmentComplete(assignments, problem.getVariables())) {
             return assignments;
         }
         // picking unselected variable to do new assignment
         //the problem itself keeps track of assignment,
 
         Variable var = problem.selectUnassignedVar();
-
         if( var != null){
             for( int i=0; i< var.getDomain().getAllowedValues().size(); i++){
-
-                switch (this.problemNumber) {
-                    case 1:
-                        if (conssistentWithMap(var.getDomain().getAllowedValues().get(i) )){
-                            assignments.add(new Assignment(var, var.getDomain().getAllowedValues().get(i) ));
-                        }
-                        break;
-                    case 2:
-                    case 3:
-                    case 4:
-
-
-
-
-
-                }
                 
                 
                 if (consistentWithAssignment( var.getDomain().getAllowedValues().get(i) )){
@@ -89,18 +72,16 @@ public class BackTrackingSearchSolver {
 
     }
 
-    private Inference inference(CSP problem, Variable var, Object o) {
-    }
+    public boolean AssignmentComplete(ArrayListSet<Assignment> assignments, ArrayListSet variables) {
+        List<Variable> allVariablesAssigned = new ArrayList<>();
+        //making a list of variables that have assigned a value
+        for(Assignment assign: assignments){
+            allVariablesAssigned.add(assign.getVariable());
+        }
+        //if all variables have been assigned, then the assignment list complete. if not, then no
 
-    private boolean consistentWithAssignment(Object o) {
-        return false;
-    }
-
-    // done
-    public boolean AssignmentComplete( ArrayListSet<Variable> variables) {
-
-        for (int i = 0; i < variables.size(); i++) {
-            if (variables.get(i).valueAssigned() == false) {
+        for(int i=0; i< variables.size(); i++){
+            if (!allVariablesAssigned.contains(variables.get(i))){
                 return false;
             }
         }
@@ -108,19 +89,36 @@ public class BackTrackingSearchSolver {
 
     }
 
-    // AC3 algorithm
-    public boolean AC3(CSP problem, ArrayListSet variables, Domain domain, Constraint constraint) {
-        Queue<Variable> queue = new LinkedList<Variable>();
-        // add arcs to queue
-//        for ( : problem.getVariables())
+
+//    // AC3 algorithm
+//    public boolean AC3(CSP problem, ArrayListSet variables, Domain domain, Constraint constraint) {
+//        Queue<Tuple> queue = new LinkedList<>();
+//        // add arcs to queue
 //        while(!queue.isEmpty()){
-//            queue.pop();
-//            if Revise(problem, Xi, Xj){
-//
+//            Tuple t = queue.poll();
+//            Variable Xi = t.getI();
+//            Variable Xj = t.getJ();
+//            if (Revise(problem, Xi, Xj)){
+//                if (Xi.getDomain().getAllowedValues().isEmpty()){
+//                    return false;
+//                }
 //            }
 //        }
-        return true;
-    }
+//        return true;
+//    }
+//
+//    // Revise function for AC3 algorithm
+//    public boolean Revise(CSP problem, Variable Xi, Variable Xj){
+//        boolean revised = false;
+//        for (domain : Xi.getDomain().getAllowedValues()){
+//            if (){
+//                Xi.getDomain().getAllowedValues().remove(Xi);
+//                revised = true;
+//            }
+//        }
+//        return revised;
+//    }
+//}
 
     // Revise function for AC3 algorithm
     public boolean Revise(CSP problem, Variable Xi, Variable Xj){
