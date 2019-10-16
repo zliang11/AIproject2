@@ -56,27 +56,35 @@ public class BackTrackingSearchSolver {
     }
 
 
-    // AC3 algorithm
-    public boolean AC3(CSP problem, ArrayListSet variables, Domain domain, Constraint constraint) {
-        Queue<Variable> queue = new LinkedList<Variable>();
-        // add arcs to queue
-        for ( : problem.getVariables())
-        while(!queue.isEmpty()){
-            queue.pop();
-            if Revise(problem, Xi, Xj){
+//    // AC3 algorithm
+//    public boolean AC3(CSP problem, ArrayListSet variables, Domain domain, Constraint constraint) {
+//        Queue<Tuple> queue = new LinkedList<>();
+//        // add arcs to queue
+//        while(!queue.isEmpty()){
+//            Tuple t = queue.poll();
+//            Variable Xi = t.getI();
+//            Variable Xj = t.getJ();
+//            if (Revise(problem, Xi, Xj)){
+//                if (Xi.getDomain().getAllowedValues().isEmpty()){
+//                    return false;
+//                }
+//            }
+//        }
+//        return true;
+//    }
+//
+//    // Revise function for AC3 algorithm
+//    public boolean Revise(CSP problem, Variable Xi, Variable Xj){
+//        boolean revised = false;
+//        for (domain : Xi.getDomain().getAllowedValues()){
+//            if (){
+//                Xi.getDomain().getAllowedValues().remove(Xi);
+//                revised = true;
+//            }
+//        }
+//        return revised;
+//    }
+//}
 
-            }
-        }
-        return true;
-    }
 
-    // Revise function for AC3 algorithm
-    public boolean Revise(CSP problem, Variable Xi, Variable Xj){
-        boolean revised = false;
-        for (domain : problem.getDomainValues(Xi)){
 
-        }
-
-        return revised;
-    }
-}

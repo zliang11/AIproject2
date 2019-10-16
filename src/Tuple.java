@@ -1,25 +1,25 @@
-public class Tuple<X> {
-    private X i;
-    private X j;
+public class Tuple {
+    private Variable i;
+    private Variable j;
 
-    public Tuple(X x, X y) {
+    public Tuple(Variable x, Variable y) {
         this.i = x;
         this.j = y;
     }
 
-    public X getI() {
+    public Variable getI() {
         return i;
     }
 
-    public void setI(X i) {
+    public void setI(Variable i) {
         this.i = i;
     }
 
-    public X getJ() {
+    public Variable getJ() {
         return j;
     }
 
-    public void setJ(X j) {
+    public void setJ(Variable j) {
         this.j = j;
     }
 
