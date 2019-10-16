@@ -5,9 +5,19 @@ import java.util.Queue;
 
 public class BackTrackingSearchSolver {
     ArrayListSet<Assignment> assignments;
+    // keeping track of all assignments
 
-    public BackTrackingSearchSolver() {
+    Integer problemNumber = null;
+    // 1 = Australia Map
+    // 2 = Job
+    // 3 = nQueen
+    // 4 = AC3 demo
+    // 5 = Mackworth
+
+
+    public BackTrackingSearchSolver(int problemNumber) {
         this.assignments = new ArrayListSet<Assignment>();
+        this.problemNumber = problemNumber;
 
     }
 
@@ -29,8 +39,25 @@ public class BackTrackingSearchSolver {
         //the problem itself keeps track of assignment,
 
         Variable var = problem.selectUnassignedVar();
+
         if( var != null){
             for( int i=0; i< var.getDomain().getAllowedValues().size(); i++){
+
+                switch (this.problemNumber) {
+                    case 1:
+                        if (conssistentWithMap(var.getDomain().getAllowedValues().get(i) )){
+                            assignments.add(new Assignment(var, var.getDomain().getAllowedValues().get(i) ));
+                        }
+                        break;
+                    case 2:
+                    case 3:
+                    case 4:
+
+
+
+
+
+                }
                 
                 
                 if (consistentWithAssignment( var.getDomain().getAllowedValues().get(i) )){
