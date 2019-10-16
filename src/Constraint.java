@@ -9,6 +9,7 @@ public abstract class Constraint {
         this.variablesInvolved = variables;
 
     }
+
     public String toString(){
         String result="";
         for (int i=0; i<this.variablesInvolved.size(); i++){
