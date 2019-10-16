@@ -22,13 +22,36 @@ public class BackTrackingSearchSolver {
     public ArrayListSet Backtrack(ArrayListSet<Assignment> assignments, CSP problem) {
         //this assignment input should be from the CSP problem's assignment.
 
-        if (AssignmentComplete(assignments, problem.getVariables())) {
+        if (AssignmentComplete(problem.getVariables())) {
             return assignments;
         }
         // picking unselected variable to do new assignment
         //the problem itself keeps track of assignment,
 
         Variable var = problem.selectUnassignedVar();
+        if( var != null){
+            for( int i=0; i< var.getDomain().getAllowedValues().size(); i++){
+                
+                
+                if (consistentWithAssignment( var.getDomain().getAllowedValues().get(i) )){
+                    assignments.add(new Assignment(var, var.getDomain().getAllowedValues().get(i) ));
+                    
+                    Inference newInference = inference(problem, var, var.getDomain().getAllowedValues().get(i));
+                    // this inferencing needs implementation.
+
+                    if (! newInference.failure()) {
+                        assignments.add(newInference.toAssignment());
+                        ArrayListSet result = Backtrack(assignments, problem);
+                        if(!result.failure()){
+                            return result;
+                        }
+                    }
+                    
+                }
+                // two lines of removal not added bc confused.
+            }
+            return null;
+        }
 
 //        if (assign.complete()) {
 //            return assign;
@@ -39,34 +62,36 @@ public class BackTrackingSearchSolver {
 
     }
 
-    public boolean AssignmentComplete(ArrayListSet<Assignment> assignments, ArrayListSet variables) {
-        List<Variable> allVariablesAssigned = new ArrayList<>();
-        //making a list of variables that have assigned a value
-        for(Assignment assign: assignments){
-            allVariablesAssigned.add(assign.getVariable());
-        }
-        //if all variables have been assigned, then the assignment list complete. if not, then no
+    private Inference inference(CSP problem, Variable var, Object o) {
+    }
 
-        for(int i=0; i< variables.size(); i++){
-            if (!allVariablesAssigned.contains(variables.get(i))){
+    private boolean consistentWithAssignment(Object o) {
+        return false;
+    }
+
+    // done
+    public boolean AssignmentComplete( ArrayListSet<Variable> variables) {
+
+        for (int i = 0; i < variables.size(); i++) {
+            if (variables.get(i).valueAssigned() == false) {
                 return false;
             }
         }
         return true;
-    }
 
+    }
 
     // AC3 algorithm
     public boolean AC3(CSP problem, ArrayListSet variables, Domain domain, Constraint constraint) {
         Queue<Variable> queue = new LinkedList<Variable>();
         // add arcs to queue
-        for ( : problem.getVariables())
-        while(!queue.isEmpty()){
-            queue.pop();
-            if Revise(problem, Xi, Xj){
-
-            }
-        }
+//        for ( : problem.getVariables())
+//        while(!queue.isEmpty()){
+//            queue.pop();
+//            if Revise(problem, Xi, Xj){
+//
+//            }
+//        }
         return true;
     }
 
