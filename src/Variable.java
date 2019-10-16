@@ -1,13 +1,17 @@
+import java.util.List;
+
 public abstract class Variable {
     private String variableName;
     private Domain domain;
     private String assignedValue = null;
     private Integer assignedNum = null;
+    private List<Variable> neighbors;
     // this should most likely be abstract class
 
-    public Variable(String varName, Domain dom){
+    public Variable(String varName, Domain dom, List<Variable> nb){
         this.variableName = varName;
         this.domain = dom;
+        this.neighbors = nb;
     }
 
     public String toString(){
@@ -34,6 +38,10 @@ public abstract class Variable {
             return false;
         }
         return true;
+    }
+
+    public List getNeighbors(){
+        return this.neighbors;
     }
 
     public abstract Domain changeDomain();

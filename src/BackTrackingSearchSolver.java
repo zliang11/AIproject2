@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class BackTrackingSearchSolver {
     ArrayListSet<Assignment> assignments;
@@ -56,35 +57,38 @@ public class BackTrackingSearchSolver {
     }
 
 
-//    // AC3 algorithm
-//    public boolean AC3(CSP problem, ArrayListSet variables, Domain domain, Constraint constraint) {
-//        Queue<Tuple> queue = new LinkedList<>();
-//        // add arcs to queue
-//        while(!queue.isEmpty()){
-//            Tuple t = queue.poll();
-//            Variable Xi = t.getI();
-//            Variable Xj = t.getJ();
-//            if (Revise(problem, Xi, Xj)){
-//                if (Xi.getDomain().getAllowedValues().isEmpty()){
-//                    return false;
-//                }
-//            }
-//        }
-//        return true;
-//    }
-//
-//    // Revise function for AC3 algorithm
-//    public boolean Revise(CSP problem, Variable Xi, Variable Xj){
-//        boolean revised = false;
-//        for (domain : Xi.getDomain().getAllowedValues()){
-//            if (){
-//                Xi.getDomain().getAllowedValues().remove(Xi);
-//                revised = true;
-//            }
-//        }
-//        return revised;
-//    }
-//}
+    // AC3 algorithm
+    public boolean AC3(CSP problem, ArrayListSet variables, Domain domain, Constraint constraint) {
+        Queue<Tuple> queue = new LinkedList<>();
+        // add arcs to queue
+        while(!queue.isEmpty()){
+            Tuple t = queue.poll();
+            Variable Xi = t.getI();
+            Variable Xj = t.getJ();
+            if (Revise(problem, Xi, Xj)){
+                if (Xi.getDomain().getAllowedValues().isEmpty()){
+                    return false;
+                }
+                for (Variable Xk : Xi.getNeighbors()){
+                    queue.add(new Tuple (Xk, Xi));
+                }
+            }
+        }
+        return true;
+    }
+
+    // Revise function for AC3 algorithm
+    public boolean Revise(CSP problem, Variable Xi, Variable Xj){
+        boolean revised = false;
+        for (Object v : Xi.getDomain().getAllowedValues()){
+            if (){
+                Xi.getDomain().getAllowedValues().remove(Xi);
+                revised = true;
+            }
+        }
+        return revised;
+    }
+}
 
 
 
