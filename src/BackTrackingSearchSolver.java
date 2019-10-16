@@ -6,9 +6,19 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class BackTrackingSearchSolver {
     ArrayListSet<Assignment> assignments;
+    // keeping track of all assignments
 
-    public BackTrackingSearchSolver() {
+    Integer problemNumber = null;
+    // 1 = Australia Map
+    // 2 = Job
+    // 3 = nQueen
+    // 4 = AC3 demo
+    // 5 = Mackworth
+
+
+    public BackTrackingSearchSolver(int problemNumber) {
         this.assignments = new ArrayListSet<Assignment>();
+        this.problemNumber = problemNumber;
 
     }
 
@@ -30,6 +40,29 @@ public class BackTrackingSearchSolver {
         //the problem itself keeps track of assignment,
 
         Variable var = problem.selectUnassignedVar();
+        if( var != null){
+            for( int i=0; i< var.getDomain().getAllowedValues().size(); i++){
+                
+                
+                if (consistentWithAssignment( var.getDomain().getAllowedValues().get(i) )){
+                    assignments.add(new Assignment(var, var.getDomain().getAllowedValues().get(i) ));
+                    
+                    Inference newInference = inference(problem, var, var.getDomain().getAllowedValues().get(i));
+                    // this inferencing needs implementation.
+
+                    if (! newInference.failure()) {
+                        assignments.add(newInference.toAssignment());
+                        ArrayListSet result = Backtrack(assignments, problem);
+                        if(!result.failure()){
+                            return result;
+                        }
+                    }
+                    
+                }
+                // two lines of removal not added bc confused.
+            }
+            return null;
+        }
 
 //        if (assign.complete()) {
 //            return assign;
@@ -54,6 +87,7 @@ public class BackTrackingSearchSolver {
             }
         }
         return true;
+
     }
 
 
@@ -90,5 +124,13 @@ public class BackTrackingSearchSolver {
     }
 }
 
+    // Revise function for AC3 algorithm
+    public boolean Revise(CSP problem, Variable Xi, Variable Xj){
+        boolean revised = false;
+        for (domain : problem.getDomainValues(Xi)){
 
+        }
 
+        return revised;
+    }
+}
