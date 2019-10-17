@@ -13,6 +13,18 @@ public abstract class CSP {
     }
 
     // sleecting the unassigned variable - done
+
+    public Variable assignVariable(Variable var, String value){
+        int index = this.variables.indexOf(var);
+        this.variables.get(index).assignValue(value);
+        return this.variables.get(index);
+    }
+    public Variable assignVariable(Variable var, Integer value){
+        int index = this.variables.indexOf(var);
+        this.variables.get(index).assignNum(value);
+        return this.variables.get(index);
+    }
+
     public Variable selectUnassignedVar() {
         for( int j=0; j<variables.size(); j++){
             if(!variables.get(j).valueAssigned()){

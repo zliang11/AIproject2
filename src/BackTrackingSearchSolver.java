@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class BackTrackingSearchSolver {
-    ArrayListSet<Assignment> assignments;
+    // ArrayListSet<Assignment> assignments;
     // keeping track of all assignments
 
     Integer problemNumber = null;
@@ -16,14 +16,14 @@ public class BackTrackingSearchSolver {
 
 
     public BackTrackingSearchSolver(int problemNumber) {
-        this.assignments = new ArrayListSet<Assignment>();
+        // this.assignments = new ArrayListSet<Assignment>();
         this.problemNumber = problemNumber;
 
     }
 
     public ArrayListSet Backtracking_Search(CSP problem) {
 
-        ArrayListSet<Assignment> test = new ArrayListSet<>();
+        // ArrayListSet<Assignment> test = new ArrayListSet<>();
         // placeholder only
 
         return Backtrack(test, problem);
@@ -41,23 +41,51 @@ public class BackTrackingSearchSolver {
         Variable var = problem.selectUnassignedVar();
         if( var != null){
             for( int i=0; i< var.getDomain().getAllowedValues().size(); i++){
-                
-                
-                if (consistentWithAssignment( var.getDomain().getAllowedValues().get(i) )){
-                    assignments.add(new Assignment(var, var.getDomain().getAllowedValues().get(i) ));
-                    
-                    Inference newInference = inference(problem, var, var.getDomain().getAllowedValues().get(i));
-                    // this inferencing needs implementation.
 
-                    if (! newInference.failure()) {
-                        assignments.add(newInference.toAssignment());
-                        ArrayListSet result = Backtrack(assignments, problem);
-                        if(!result.failure()){
-                            return result;
+                switch(this.problemNumber){
+                    case 1:
+                        if (consistentMap( assignments, problem, var, var.getDomain().getAllowedValues().get(i))){
+
+                            assignments.add(new Assignment(var, var.getDomain().getAllowedValues().get(i)));
+                            // assign it to the problem as well.
                         }
-                    }
-                    
+                        ArrayListSet result = Backtrack(updatedAssign, problem);
+
+                        break;
+
+                    case 2:
+                        consistentJob(assignments, problem, var.getDomain().getAllowedValues().get(i));
+                        break;
+                    case 3:
+                        consistentQueen(assignments, problem, var.getDomain().getAllowedValues().get(i));
+                        break;
+
+                    case 4:
+                        break;
+                        // needs inference
+                    case 5:
+                        break;
+                        // needs inference
                 }
+
+
+                
+                
+//                if (consistentWithAssignment( var.getDomain().getAllowedValues().get(i) )){
+//                    assignments.add(new Assignment(var, var.getDomain().getAllowedValues().get(i) ));
+//
+//                    Inference newInference = inference(problem, var, var.getDomain().getAllowedValues().get(i));
+//                    // this inferencing needs implementation.
+//
+//                    if (! newInference.failure()) {
+//                        assignments.add(newInference.toAssignment());
+//                        ArrayListSet result = Backtrack(assignments, problem);
+//                        if(!result.failure()){
+//                            return result;
+//                        }
+//                    }
+//
+//                }
                 // two lines of removal not added bc confused.
             }
             return null;
@@ -70,6 +98,16 @@ public class BackTrackingSearchSolver {
 
         return test;
 
+    }
+
+    private void consistentQueen(ArrayListSet<Assignment> assignments, CSP problem, Object o) {
+    }
+
+    private void consistentJob(ArrayListSet<Assignment> assignments, CSP problem, Object o) {
+    }
+
+    private Boolean consistentMap(ArrayListSet<Assignment> assignments, CSP problem, Object o) {
+        return false;
     }
 
     public boolean AssignmentComplete(ArrayListSet<Assignment> assignments, ArrayListSet variables) {

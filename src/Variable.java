@@ -1,20 +1,27 @@
-public abstract class Variable {
+public class Variable {
     private String variableName;
-    private Domain domain;
+    private ArrayListSet domain;
     private String assignedValue = null;
     private Integer assignedNum = null;
     // this should most likely be abstract class
 
-    public Variable(String varName, Domain dom){
+    public Variable(String varName, ArrayListSet domain){
         this.variableName = varName;
-        this.domain = dom;
+        this.domain = domain;
+    }
+
+    public String getAssignedValue(){
+        return this.assignedValue;
+    }
+    public Integer getAssignedNum(){
+        return this.assignedNum;
     }
 
     public String toString(){
         return this.variableName;
     }
 
-    public Domain getDomain(){
+    public ArrayListSet getDomain(){
         return this.domain;
     }
 
@@ -36,10 +43,10 @@ public abstract class Variable {
         return true;
     }
 
-    public abstract Domain changeDomain();
-    //this is for when inference happens, domain of the variable changes/altered
-
-    public abstract Object assignValue();
-    //this object thing might be absurb.
+//    public abstract Domain changeDomain();
+//    //this is for when inference happens, domain of the variable changes/altered
+//
+//    public abstract Object assignValue();
+//    //this object thing might be absurb.
 
 }
