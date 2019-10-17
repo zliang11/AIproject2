@@ -1,13 +1,18 @@
+
+import java.util.List;
+
 public class Variable {
     private String variableName;
     private ArrayListSet domain;
     private String assignedValue = null;
     private Integer assignedNum = null;
+    private List<Variable> neighbors;
     // this should most likely be abstract class
 
-    public Variable(String varName, ArrayListSet domain){
+    public Variable(String varName, ArrayListSet dom, List<Variable> nb){
         this.variableName = varName;
-        this.domain = domain;
+        this.domain = dom;
+        this.neighbors = nb;
     }
 
     public String getAssignedValue(){
@@ -48,5 +53,9 @@ public class Variable {
 //
 //    public abstract Object assignValue();
 //    //this object thing might be absurb.
+    public List getNeighbors(){
+        return this.neighbors;
+    }
+
 
 }

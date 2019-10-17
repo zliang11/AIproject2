@@ -33,25 +33,21 @@ public class JobCSP extends CSP {
 
         Variable axleF = new Variable("axleF", allowedValue);
         Variable axleB = new Variable("axleB", allowedValue);
-        Variable axleF = new Variable("wheelRF", allowedValue);
-        Variable axleF = new Variable("wheelLF", allowedValue);
-        Variable axleF = new Variable("wheelRF", allowedValue);
-        Variable axleF = new Variable("wheelLB", allowedValue);
-        Variable axleF = new Variable("wheelRB", allowedValue);
-        Variable axleF = new Variable("nutsRF", allowedValue);
-        Variable axleF = new Variable("nutsLF", allowedValue);
-        Variable axleF = new Variable("nutsRB", allowedValue);
-        Variable axleF = new Variable("axleF", allowedValue);
-        Variable axleF = new Variable("axleF", allowedValue);
-        Variable axleF = new Variable("axleF", allowedValue);
-        Variable axleF = new Variable("axleF", allowedValue);
-        Variable axleF = new Variable("axleF", allowedValue);
-        Variable axleF = new Variable("axleF", allowedValue);
-        Variable axleF = new Variable("axleF", allowedValue);
-        Variable axleF = new Variable("axleF", allowedValue);
-        Variable axleF = new Variable("axleF", allowedValue);
-        Variable axleF = new Variable("axleF", allowedValue);
-        Variable axleF = new Variable("axleF", allowedValue);
+        Variable wheelRF1 = new Variable("wheelRF", allowedValue);
+        Variable wheelLF = new Variable("wheelLF", allowedValue);
+        Variable wheelRF = new Variable("wheelRF", allowedValue);
+        Variable wheelLB = new Variable("wheelLB", allowedValue);
+        Variable wheelRB = new Variable("wheelRB", allowedValue);
+        Variable nutsRF = new Variable("nutsRF", allowedValue);
+        Variable nutsLF = new Variable("nutsLF", allowedValue);
+        Variable nutsRB = new Variable("nutsRB", allowedValue);
+        Variable nutsLB = new Variable("nutsLB", allowedValue);
+        Variable capRF = new Variable("capRF", allowedValue);
+        Variable capLF = new Variable("capLF", allowedValue);
+        Variable capRB = new Variable("capRB", allowedValue);
+        Variable capLB = new Variable("capLB", allowedValue);
+        Variable inspect = new Variable("inspect", allowedValue);
+
 
 
 

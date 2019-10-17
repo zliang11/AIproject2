@@ -25,6 +25,7 @@ public abstract class CSP {
         return this.variables.get(index);
     }
 
+    // selecting the unassigned variable - done
     public Variable selectUnassignedVar() {
         for( int j=0; j<variables.size(); j++){
             if(!variables.get(j).valueAssigned()){
@@ -63,6 +64,10 @@ public abstract class CSP {
 
     public boolean addAssignment(Assignment new_Assign){
         return this.assignments.add(new_Assign);
+    }
+
+    public boolean isSatisfied(Assignment assign){
+
     }
 
 //    public Domain getDomainValues(Variable var, Assignment assign, CSP problem){
