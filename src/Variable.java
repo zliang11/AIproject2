@@ -1,24 +1,32 @@
+
 import java.util.List;
 
-public abstract class Variable {
+public class Variable {
     private String variableName;
-    private Domain domain;
+    private ArrayListSet domain;
     private String assignedValue = null;
     private Integer assignedNum = null;
     private List<Variable> neighbors;
     // this should most likely be abstract class
 
-    public Variable(String varName, Domain dom, List<Variable> nb){
+    public Variable(String varName, ArrayListSet dom, List<Variable> nb){
         this.variableName = varName;
         this.domain = dom;
         this.neighbors = nb;
+    }
+
+    public String getAssignedValue(){
+        return this.assignedValue;
+    }
+    public Integer getAssignedNum(){
+        return this.assignedNum;
     }
 
     public String toString(){
         return this.variableName;
     }
 
-    public Domain getDomain(){
+    public ArrayListSet getDomain(){
         return this.domain;
     }
 
@@ -40,14 +48,14 @@ public abstract class Variable {
         return true;
     }
 
+//    public abstract Domain changeDomain();
+//    //this is for when inference happens, domain of the variable changes/altered
+//
+//    public abstract Object assignValue();
+//    //this object thing might be absurb.
     public List getNeighbors(){
         return this.neighbors;
     }
 
-    public abstract Domain changeDomain();
-    //this is for when inference happens, domain of the variable changes/altered
-
-    public abstract Object assignValue();
-    //this object thing might be absurb.
 
 }

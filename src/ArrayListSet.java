@@ -44,4 +44,6 @@ public class ArrayListSet<E> extends ArrayList<E> implements Set<E> {
     public boolean failure() {
         return false;
     }
+
+
 }

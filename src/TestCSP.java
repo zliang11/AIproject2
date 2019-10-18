@@ -2,8 +2,12 @@
 public class TestCSP extends CSP {
 
     public TestCSP() {
+
+        // use this test as australia.
         //domain
+
         ArrayListSet<ColorDomain> colorRGB = new ArrayListSet<ColorDomain>();
+
         colorRGB.add(ColorDomain.BLUE);
         colorRGB.add(ColorDomain.RED);
         colorRGB.add(ColorDomain.GREEN);

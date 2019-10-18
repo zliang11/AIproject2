@@ -1,12 +1,12 @@
-//public class NotEqualConstraint extends Constraint{
-//    Variable var1;
-//    Variable var2;
-//
-//    public NotEqualConstraint(Variable var1, Variable var2){
-//        this.var1 = var1;
-//        this.var2 = var2;
-//
-//    }
+public class NotEqualConstraint extends Constraint {
+
+
+    public NotEqualConstraint(Variable var1, Variable var2) {
+        this.var1 = var1;
+        this.var2 = var2;
+
+    }
+}
 //
 //    public boolean constraintValidCheck(Assignment assign, Variable setVar, Domain setValue){
 //
